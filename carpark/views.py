@@ -19,6 +19,35 @@ import pandas as pd
 class CarparkRatesAPI(APIView):
     permission_classes = [permissions.AllowAny]
 
+    """
+    # This function is to get all carpark rates data (use this if Yu Ze wants all carpark rates data for his visualization)
+    def post(self, request, *args, **kwargs):
+        # Get all unique carpark codes
+        carpark_codes = CarparkRates.objects.values_list('carparkcode', flat=True).distinct()
+
+        # Organize the format of the rates data to be returned
+        organized_data = {}
+        for carparkcode in carpark_codes:
+            carpark_rates = CarparkRates.objects.filter(carparkcode=carparkcode)
+            if carpark_rates.exists():
+                carparkname = carpark_rates.first().carparkname
+                rates_data = {}
+                for rate in carpark_rates:
+                    vehcat = rate.vehcat
+                    if vehcat not in rates_data:
+                        rates_data[vehcat] = CarparkRatesSerializer(rate).data
+                organized_data[carparkcode] = {
+                    'carparkname': carparkname,
+                    'rates': rates_data
+                }
+
+        if organized_data:
+            return Response(organized_data, status=status.HTTP_200_OK)
+        else:
+            return Response("No carpark rates found", status=status.HTTP_404_NOT_FOUND) 
+    """
+
+    # This function is to get carpark rates data for a specified carpark code
     def post(self, request, *args, **kwargs):
         carparkcode = request.data.get('carparkcode')
         

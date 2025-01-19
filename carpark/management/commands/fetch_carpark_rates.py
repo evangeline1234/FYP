@@ -45,7 +45,7 @@ class Command(BaseCommand):
                 sunphrate=row['sunPHRate'],
                 sunphmin=row['sunPHMin'],
                 parkingsystem=row['parkingSystem'],
-                carparkcapacity=row['parkCapacity'],
+                parkcapacity=row['parkCapacity'],
                 geometries=row['geometries']
             )
 

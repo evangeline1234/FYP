@@ -14,7 +14,7 @@ class CarparkRates(models.Model):
     sunphrate = models.DecimalField(max_digits=10, decimal_places=2)
     sunphmin = models.IntegerField()
     parkingsystem = models.CharField(max_length=255)
-    carparkcapacity = models.IntegerField()
+    parkcapacity = models.IntegerField()
     geometries = models.JSONField()
 
     def __str__(self):

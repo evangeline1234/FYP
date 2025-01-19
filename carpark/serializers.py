@@ -83,8 +83,8 @@ class NearbyCarparkSerializer(serializers.Serializer):
         unique_carparks['carpark_location'] = unique_carparks.apply(lambda x: (x['lat'], x['lon']), axis=1)
         unique_carparks['distance'] = unique_carparks.apply(lambda x: geodesic(x['user_location'], x['carpark_location']).kilometers, axis=1)
     
-        # Filter out carpark locations within 2km
-        nearby_carparks = unique_carparks[unique_carparks['distance'] <= 2]
+        # Filter out carpark locations within 1km
+        nearby_carparks = unique_carparks[unique_carparks['distance'] <= 1]
         nearby_carparks = nearby_carparks[['carparkNo', 'lat', 'lon', 'distance']]
 
 
